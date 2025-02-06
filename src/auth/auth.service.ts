@@ -32,10 +32,8 @@ export class AuthService {
       // Save the new user in the database
       await this.userRepository.save(user);
 
-      // return user;
-      // return user;
-
-      //return token
+      
+      //returns token
       return this.signToken(user.id, user.email);
     } catch (error) {
       if (error.code === 'ER_DUP_ENTRY') {
@@ -62,7 +60,7 @@ export class AuthService {
     if (!pwMatch) throw new ForbiddenException('credential incorrect');
 
     // Delete the password field before returning the user
-    //  delete user.password; ********
+    // delete user.password;
 
     //otherwise return user
     return this.signToken(user.id, user.email);
